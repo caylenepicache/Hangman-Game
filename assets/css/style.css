@@ -1,0 +1,45 @@
+body {
+    background-image: url("../images/c42be09876573.560dbae2cec1e.jpg");
+
+}
+
+.container {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+
+.jumbotron {
+    background-color: #4AA176;
+    font-family: 'Varela Round', sans-serif;
+    color: #eee;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.panel-heading {
+background-color: #E46251 !important;
+}
+
+.panel-title {
+    font-size: 36px; 
+    font-family: 'Satisfy', cursive;
+    color: #eee;
+}
+
+.panel {
+    margin-bottom: 10px;
+}
+.panel-body {
+    padding: 0px;
+    font-size: 18px;
+}
+
+h1 {
+    font-family: 'Courgette', cursive;
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 30px;
+}
