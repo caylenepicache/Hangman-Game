@@ -21,7 +21,6 @@ var stringArray = [];
 
 //any key starts game
 function startGame() {
-  console.log("start");
   Game();
 };
 
@@ -39,7 +38,6 @@ function blankSpace() {
 function Game() {
   //a word is chosen at random
   chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-  console.log(chosenWord);
 
   //will reset when game is called up again
   wrongGuesses = [];
@@ -60,7 +58,6 @@ function Game() {
 
     //converts input to lowercase
     keyInput = keyInput.toLowerCase();
-    //console.log(keyInput);
 
 
 
@@ -68,26 +65,19 @@ function Game() {
 //checks if letter is part of the alphabet
 if (event.keyCode >= 65 && event.keyCode <= 90){
 
-    //checks if letter is in the wrong guess array
+    //checks if letter is already in the wrong guess array
   if (wrongGuesses.indexOf(keyInput) > -1) {
-      console.log("already guessed");
     }
 
       //checks if letter is in the array
       //else if will execute if the letter is in that array, what to do with it
     else if (wordToArray.indexOf(keyInput) > -1) {
-      //console.log("letter is in the array");
-      console.log(keyInput);
-
 
       //for loop the letters to check each letter and compares it to Key input
       for (i = 0; i < chosenWord.length; i++) {
-          //console.log(chosenWord[i]);
           //if the keyinput is the same as the word in array, replace that key input at the same index of the array
         if( keyInput === wordToArray[i]){
-          //console.log("TRUE");
           underScoreArray[i] = keyInput;
-          //console.log(underScoreArray);
           document.querySelector("#word-blanks").innerHTML = underScoreArray.join(" ");
         } 
       }
@@ -95,23 +85,15 @@ if (event.keyCode >= 65 && event.keyCode <= 90){
         else {
           wrongGuesses.push(keyInput);
           document.querySelector("#wrong-guesses").innerHTML = wrongGuesses.join(", ");
-          //console.log(wrongGuesses);
           turnsLeft--;
           document.querySelector("#guesses-left").innerHTML = turnsLeft;
-          //console.log(turnsLeft);
         }
       }
-        //console.log(underScoreArray);
-        //console.log(wordToArray);
-
 
         //determines how many turns are left and keeps track of score
   if (underScoreArray.toString() === wordToArray.toString() && turnsLeft > 0) {
-    console.log(underScoreArray);
-    console.log(wordToArray);
     wins++;
     document.querySelector("#win-counter").innerHTML = wins;
-    console.log(wins);
     alert("Correct! Press any letter for next word!")
     Game ();
   }
@@ -119,8 +101,6 @@ if (event.keyCode >= 65 && event.keyCode <= 90){
     loss++;
     document.querySelector("#loss-counter").innerHTML = loss;
     alert("No turns left! Press any letter for next word!");
-    console.log("no turns left");
-    console.log(loss);
     Game ();
     }
   }
