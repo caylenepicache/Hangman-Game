@@ -43,3 +43,8 @@ h1 {
 h2 {
     font-size: 30px;
 }
+
+#prevWord {
+    color: #4AA176;
+    font-size: 20px;
+}

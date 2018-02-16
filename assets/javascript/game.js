@@ -15,6 +15,7 @@ var wrongGuesses = [];
 var underScoreArray = [];
 var stringArray = [];
 
+var previousWord;
 // STEPS/THOUGHT PROCESS ARE COMMENTED
 
 //FUNCTIONS
@@ -36,6 +37,8 @@ function blankSpace() {
 
 //key again will take a guess
 function Game() {
+  chosenWord="";
+
   //a word is chosen at random
   chosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
@@ -43,12 +46,17 @@ function Game() {
   wrongGuesses = [];
   underScoreArray = [];
   turnsLeft = 10;
+  underScoreArray=[];
+  stringArray=[];
 
   //calling blankspace function
   blankSpace();
+
+  document.querySelector("#word-blanks").innerHTML = underScoreArray.join(" ");
   
 //the internal part of the game
   document.onkeyup = function innerGame(event) {
+    
 
     //splits the chosen word into an array called wordToArray
     wordToArray = chosenWord.split("");
@@ -94,15 +102,20 @@ if (event.keyCode >= 65 && event.keyCode <= 90){
   if (underScoreArray.toString() === wordToArray.toString() && turnsLeft > 0) {
     wins++;
     document.querySelector("#win-counter").innerHTML = wins;
-    alert("Correct! Press any letter for next word!")
+    previousWord = chosenWord;
+    document.querySelector("#previous-word").innerHTML = previousWord;
+    alert("Correct! Press any letter for next word!");
     Game ();
   }
   else if (turnsLeft === 0) {
     loss++;
     document.querySelector("#loss-counter").innerHTML = loss;
+    previousWord = chosenWord;
+    document.querySelector("#previous-word").innerHTML = previousWord;
     alert("No turns left! Press any letter for next word!");
     Game ();
     }
+
   }
 };
 
